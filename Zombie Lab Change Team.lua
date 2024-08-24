@@ -148,8 +148,8 @@ local function EquipTool(Tool)
 	plr.Character.Humanoid:EquipTool(plr.Backpack:FindFirstChild(Tool))
 end
 
-function Goto(Player)
-	plr.Character.HumanoidRootPart.CFrame = Player.Character.HumanoidRootPart.CFrame * CFrame.new(-2, 0, 2)
+function Bring(Player)
+	Player.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame * CFrame.new(2, 0, -1)
 end
 
 local function ChangeTeam(Player)
@@ -163,7 +163,7 @@ GiveItem("Virus")
 task.wait(0.3)
 for i = 1, 25 do
 EquipTool("Virus")
-Goto(Player)
+Bring(Player)
 ClickTool("Virus")
 task.wait()
 end
@@ -177,7 +177,7 @@ GiveItem("Cure")
 task.wait(0.3)
 for i = 1, 25 do
 EquipTool("Cure")
-Goto(Player)
+Bring(Player)
 ClickTool("Cure")
 task.wait()
 end
