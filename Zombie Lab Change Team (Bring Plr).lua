@@ -149,7 +149,7 @@ local function EquipTool(Tool)
 end
 
 function Bring(Player)
-	Player.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame * CFrame.new(2, 0, -1)
+	Player.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame * CFrame.new(2, 0, -2)
 end
 
 local function ChangeTeam(Player)
