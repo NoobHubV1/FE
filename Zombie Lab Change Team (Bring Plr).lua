@@ -159,8 +159,9 @@ Notif("(Error) Player Dead")
 else
 if Player.Team == game.Teams.Human then
 if Player ~= nil then
+Notif("(Success) Virus "..Player.DisplayName,3)
 GiveItem("Virus")
-task.wait(0.3)
+task.wait(0.5)
 for i = 1, 25 do
 EquipTool("Virus")
 Bring(Player)
@@ -173,15 +174,15 @@ Notif("(Error) No Player Found",3)
 end
 elseif Player.Team == game.Teams.Zombie then
 if Player ~= nil then
+Notif("(Success) Cure "..Player.DisplayName,3)
 GiveItem("Cure")
-task.wait(0.3)
+task.wait(0.5)
 for i = 1, 25 do
 EquipTool("Cure")
 Bring(Player)
 ClickTool("Cure")
 task.wait()
 end
-Notif("(Success) Cure "..Player.DisplayName,3)
 else
 Notif("(Error) No Player Found",3)
 end
