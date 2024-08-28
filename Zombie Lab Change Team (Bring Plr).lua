@@ -4,6 +4,8 @@
 -- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
+local Open = Instance.new("TextButton")
+local Close = Instance.new("TextButton")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
 local TextBox = Instance.new("TextBox")
@@ -14,10 +16,43 @@ local TextButton = Instance.new("TextButton")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
+Open.Parent = ScreenGui
+Open.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+Open.Position = UDim2.new(0, 0, 0.533834577, 0)
+Open.Size = UDim2.new(0, 109, 0, 39)
+Open.Font = Enum.Font.SourceSans
+Open.Text = "Open"
+Open.TextColor3 = Color3.fromRGB(0, 0, 0)
+Open.TextScaled = true
+Open.TextSize = 10.000
+Open.TextWrapped = true
+Open.MouseButton1Click:Connect(function()
+Open.Visible = false
+Close.Visible = true
+Frame.Visible = true
+end)
+
+Close.Parent = ScreenGui
+Close.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+Close.Position = UDim2.new(0, 0, 0.533834577, 0)
+Close.Size = UDim2.new(0, 109, 0, 39)
+Close.Font = Enum.Font.SourceSans
+Close.Text = "Close"
+Close.TextColor3 = Color3.fromRGB(0, 0, 0)
+Close.TextScaled = true
+Close.TextSize = 10.000
+Close.TextWrapped = true
+Close.MouseButton1Click:Connect(function()
+Open.Visible = true
+Close.Visible = false
+Frame.Visible = false
+end)
+
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
 Frame.Position = UDim2.new(0.0799492374, 0, 0.483815432, 0)
 Frame.Size = UDim2.new(0, 292, 0, 171)
+Frame.Visible = false
 Frame.Active = true
 Frame.Archivable = true
 Frame.Draggable = true
