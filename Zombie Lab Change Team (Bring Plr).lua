@@ -24,7 +24,7 @@ Open.Font = Enum.Font.SourceSans
 Open.Text = "Open"
 Open.TextColor3 = Color3.fromRGB(0, 0, 0)
 Open.TextScaled = true
-Open.TextSize = 10.000
+Open.TextSize = 1.000
 Open.TextWrapped = true
 Open.MouseButton1Click:Connect(function()
 Open.Visible = false
@@ -40,7 +40,7 @@ Close.Font = Enum.Font.SourceSans
 Close.Text = "Close"
 Close.TextColor3 = Color3.fromRGB(0, 0, 0)
 Close.TextScaled = true
-Close.TextSize = 10.000
+Close.TextSize = 1.000
 Close.TextWrapped = true
 Close.MouseButton1Click:Connect(function()
 Open.Visible = true
