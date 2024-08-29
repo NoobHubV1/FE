@@ -1,97 +1,3 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-local ScreenGui = Instance.new("ScreenGui")
-local Open = Instance.new("TextButton")
-local Close = Instance.new("TextButton")
-local Frame = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
-local TextBox = Instance.new("TextBox")
-local TextButton = Instance.new("TextButton")
-
---Properties:
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Open.Parent = ScreenGui
-Open.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
-Open.Position = UDim2.new(0, 0, 0.533834577, 0)
-Open.Size = UDim2.new(0, 109, 0, 39)
-Open.Font = Enum.Font.SourceSans
-Open.Text = "Open"
-Open.TextColor3 = Color3.fromRGB(0, 0, 0)
-Open.TextScaled = true
-Open.TextSize = 1.000
-Open.TextWrapped = true
-Open.MouseButton1Click:Connect(function()
-Open.Visible = false
-Close.Visible = true
-Frame.Visible = true
-end)
-
-Close.Parent = ScreenGui
-Close.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
-Close.Position = UDim2.new(0, 0, 0.533834577, 0)
-Close.Size = UDim2.new(0, 109, 0, 39)
-Close.Font = Enum.Font.SourceSans
-Close.Text = "Close"
-Close.TextColor3 = Color3.fromRGB(0, 0, 0)
-Close.TextScaled = true
-Close.TextSize = 1.000
-Close.TextWrapped = true
-Close.MouseButton1Click:Connect(function()
-Open.Visible = true
-Close.Visible = false
-Frame.Visible = false
-end)
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
-Frame.Position = UDim2.new(0.0799492374, 0, 0.483815432, 0)
-Frame.Size = UDim2.new(0, 292, 0, 171)
-Frame.Visible = false
-Frame.Active = true
-Frame.Archivable = true
-Frame.Draggable = true
-
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(0.157534242, 0, 0, 0)
-TextLabel.Size = UDim2.new(0, 200, 0, 50)
-TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = "Virus And Cure Player script"
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 14.000
-TextLabel.TextStrokeTransparency = 0.000
-TextLabel.TextWrapped = true
-
-TextBox.Parent = Frame
-TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.Position = UDim2.new(0.157534242, 0, 0.350877196, 0)
-TextBox.Size = UDim2.new(0, 200, 0, 50)
-TextBox.Font = Enum.Font.SourceSans
-TextBox.Text = "PLAYER"
-TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextBox.TextScaled = true
-TextBox.TextSize = 14.000
-TextBox.TextWrapped = true
-
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
-TextButton.Position = UDim2.new(0.311643839, 0, 0.713450253, 0)
-TextButton.Size = UDim2.new(0, 109, 0, 39)
-TextButton.Font = Enum.Font.SourceSans
-TextButton.Text = "Virus/Cure"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextScaled = true
-TextButton.TextSize = 14.000
-TextButton.TextWrapped = true
-
 local plr = game.Players.LocalPlayer
 
 function Tween(Obj, Prop, New, Time)
@@ -196,7 +102,7 @@ if Player.Team == game.Teams.Human then
 if Player ~= nil then
 Notif("(Success) Virus "..Player.DisplayName,3)
 GiveItem("Virus")
-task.wait(0.5)
+task.wait(0.4)
 for i = 1, 25 do
 EquipTool("Virus")
 Bring(Player)
@@ -211,7 +117,7 @@ elseif Player.Team == game.Teams.Zombie then
 if Player ~= nil then
 Notif("(Success) Cure "..Player.DisplayName,3)
 GiveItem("Cure")
-task.wait(0.5)
+task.wait(0.4)
 for i = 1, 25 do
 EquipTool("Cure")
 Bring(Player)
@@ -225,8 +131,158 @@ end
 end
 end
 
-TextButton.MouseButton1Click:Connect(function()
-local Player = TextBox.Text
+local destruct = Instance.new("ScreenGui")
+local open = Instance.new("TextButton")
+local close = Instance.new("TextButton")
+local main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local line = Instance.new("Frame")
+local ImageLabel = Instance.new("ImageLabel")
+local scripts = Instance.new("ScrollingFrame")
+local UIGridLayout = Instance.new("UIGridLayout")
+local CureVirus = Instance.new("TextButton")
+local Virus = Instance.new("TextButton")
+local Cure = Instance.new("TextButton")
+local player = Instance.new("TextBox")
+
+--Properties:
+
+destruct.Name = "destruct"
+destruct.Parent = game.CoreGui
+destruct.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+open.Name = "open"
+open.Parent = destruct
+open.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+open.BorderSizePixel = 0
+open.Size = UDim2.new(0, 200, 0, 50)
+open.Font = Enum.Font.Roboto
+open.Text = "Open"
+open.TextColor3 = Color3.fromRGB(255, 255, 255)
+open.TextSize = 14.000
+open.MouseButton1Click:Connect(function()
+open.Visible = false
+close.Visible = true
+main.Visible = true
+end)
+
+close.Name = "close"
+close.Parent = destruct
+close.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+close.BorderSizePixel = 0
+close.Size = UDim2.new(0, 200, 0, 50)
+close.Font = Enum.Font.Roboto
+close.Text = "Close"
+close.TextColor3 = Color3.fromRGB(255, 255, 255)
+close.TextSize = 14.000
+close.MouseButton1Click:Connect(function()
+open.Visible = true
+close.Visible = false
+main.Visible = false
+end)
+
+main.Name = "main"
+main.Parent = destruct
+main.BackgroundColor3 = Color3.fromRGB(76, 76, 76)
+main.BackgroundTransparency = 0.3
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.268847764, 0, 0.372854918, 0)
+main.Size = UDim2.new(0, 325, 0, 239)
+main.Visible = false
+main.Active = true
+
+local UserInputService = game:GetService("UserInputService")
+
+local gui = main
+
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	gui:TweenPosition(UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.05, true)
+end
+
+gui.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = gui.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+gui.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+
+TextLabel.Parent = main
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.292307675, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 134, 0, 25)
+TextLabel.Font = Enum.Font.Roboto
+TextLabel.Text = "NoobHubV1"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 17.000
+
+line.Name = "line"
+line.Parent = main
+line.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
+line.BorderSizePixel = 0
+line.Position = UDim2.new(0, 0, 0.106986806, 0)
+line.Size = UDim2.new(0, 325, 0, 6)
+
+ImageLabel.Parent = main
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(0.184615389, 0, 0, 0)
+ImageLabel.Size = UDim2.new(0, 25, 0, 25)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=4483345998"
+ImageLabel.ScaleType = Enum.ScaleType.Fit
+
+scripts.Name = "scripts"
+scripts.Parent = main
+scripts.Active = true
+scripts.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
+scripts.BackgroundTransparency = 1
+scripts.BorderSizePixel = 0
+scripts.Position = UDim2.new(0, 0, 0.134782612, 0)
+scripts.Size = UDim2.new(0, 325, 0, 173)
+scripts.CanvasSize = UDim2.new(0, 0, 1.150, 0)
+
+UIGridLayout.Parent = scripts
+UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIGridLayout.CellSize = UDim2.new(0, 100, 0, 30)
+
+CureVirus.Name = "CureVirus"
+CureVirus.Parent = scripts
+CureVirus.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+CureVirus.BorderSizePixel = 0
+CureVirus.Size = UDim2.new(0, 200, 0, 50)
+CureVirus.Font = Enum.Font.Roboto
+CureVirus.Text = "Cure/Virus"
+CureVirus.TextColor3 = Color3.fromRGB(255, 255, 255)
+CureVirus.TextSize = 14.000
+CureVirus.MouseButton1Down:Connect(function()
+local Player = player.Text
 if Player == "me" then
 if plr.Team == game.Teams.Human then
 GiveItem("Virus")
@@ -239,3 +295,43 @@ else
 ChangeTeam(Player)
 end
 end)
+
+Virus.Name = "Virus"
+Virus.Parent = scripts
+Virus.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+Virus.BorderSizePixel = 0
+Virus.Size = UDim2.new(0, 200, 0, 50)
+Virus.Font = Enum.Font.Roboto
+Virus.Text = "Give Virus"
+Virus.TextColor3 = Color3.fromRGB(255, 255, 255)
+Virus.TextSize = 14.000
+Virus.MouseButton1Down:Connect(function()
+GiveItem("Virus")
+end)
+
+Cure.Name = "Cure"
+Cure.Parent = scripts
+Cure.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+Cure.BorderSizePixel = 0
+Cure.Size = UDim2.new(0, 200, 0, 50)
+Cure.Font = Enum.Font.Roboto
+Cure.Text = "Give Cure"
+Cure.TextColor3 = Color3.fromRGB(255, 255, 255)
+Cure.TextSize = 14.000
+Cure.MouseButton1Down:Connect(function()
+GiveItem("Cure")
+end)
+
+player.Name = "player"
+player.Parent = main
+player.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+player.BorderSizePixel = 0
+player.Position = UDim2.new(0.0246153846, 0, 0.870292902, 0)
+player.Size = UDim2.new(0, 310, 0, 23)
+player.ClearTextOnFocus = true
+player.Font = Enum.Font.SourceSans
+player.PlaceholderColor3 = Color3.fromRGB(152, 152, 152)
+player.PlaceholderText = "PLAYER"
+player.Text = ""
+player.TextColor3 = Color3.fromRGB(255, 255, 255)
+player.TextSize = 14.000
