@@ -102,7 +102,7 @@ if Player.Team == game.Teams.Human then
 if Player ~= nil then
 Notif("(Success) Virus "..Player.DisplayName,3)
 GiveItem("Virus")
-task.wait(0.4)
+repeat wait() until plr.Character:FindFirstChild("Virus") or plr.Backpack:FindFirstChild("Virus")
 for i = 1, 25 do
 EquipTool("Virus")
 Bring(Player)
@@ -117,7 +117,7 @@ elseif Player.Team == game.Teams.Zombie then
 if Player ~= nil then
 Notif("(Success) Cure "..Player.DisplayName,3)
 GiveItem("Cure")
-task.wait(0.4)
+repeat wait() until plr.Character:FindFirstChild("Cure") or plr.Backpack:FindFirstChild("Cure")
 for i = 1, 25 do
 EquipTool("Cure")
 Bring(Player)
