@@ -278,7 +278,7 @@ CureVirus.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
 CureVirus.BorderSizePixel = 0
 CureVirus.Size = UDim2.new(0, 200, 0, 50)
 CureVirus.Font = Enum.Font.Roboto
-CureVirus.Text = "Cure/Virus"
+CureVirus.Text = "Human/Zombie"
 CureVirus.TextColor3 = Color3.fromRGB(255, 255, 255)
 CureVirus.TextSize = 14.000
 CureVirus.MouseButton1Down:Connect(function()
