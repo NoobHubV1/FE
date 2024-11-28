@@ -57,6 +57,9 @@ re1.TextSize = 14.000
 re1.TextStrokeTransparency = 0.000
 re1.TextWrapped = true
 
+local Toggles = {
+      AutoRespawn = false
+}
 local Player, plr = game.Players.LocalPlayer, game.Players.LocalPlayer
 local saved = workspace["Criminals Spawn"].SpawnLocation.CFrame
 
@@ -284,26 +287,29 @@ end
 re2.MouseButton1Click:connect(function()
     re2.Visible = false
     re1.Visible = true
-    AutoRespawn = false
+    Toggles.AutoRespawn = false
 end)
 
 re1.MouseButton1Click:connect(function()
     re2.Visible = true
     re1.Visible = false
     re1.Text = "Auto Respawn : Off"
-    AutoRespawn = true
+    Toggles.AutoRespawn = true
 end)
 
 plr.CharacterAdded:Connect(function(NewChar)
     repeat swait() until NewChar
     NewChar:WaitForChild('Head')
     NewChar:WaitForChild("HumanoidRootPart")
-    NewChar:WaitForChild("Humanoid").BreakJointsOnDeath = not AutoRespawn
+    NewChar:WaitForChild("Humanoid").BreakJointsOnDeath = not Toggles.AutoRespawn
     NewChar:WaitForChild("Humanoid").Died:Connect(function()
-        if AutoRespawn then
+        if Toggles.AutoRespawn then
           Refresh()
         end
     end)
+    if Toggles.AutoRespawn then
+	NewChar:WaitForChild("ForceField"):Destroy()
+    end
 end)
 Refresh()
-Main:TweenPosition(UDim2.new(0.402142167, 0, 0.415692836, 0),"Out","Quart",1)
+Main:TweenPosition(UDim2.new(0.368556708, 0, 0.11490047, 0),"Out","Quart",1)
