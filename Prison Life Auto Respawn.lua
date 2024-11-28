@@ -1,5 +1,6 @@
 local ScreenGui = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
+local Label = Instance.new("TextLabel")
 local re2 = Instance.new("TextButton")
 local re1 = Instance.new("TextButton")
 
@@ -16,13 +17,24 @@ Main.BorderColor3 = Color3.fromRGB(255, 0, 0)
 Main.BorderSizePixel = 2
 Main.Position = UDim2.new(0.00485906005, 0, 0.609179854, 0)
 Main.Size = UDim2.new(0.17087847, 0, 0.381620556, 0)
-Main.Draggable = true
+
+Label.Name = "Label"
+Label.Parent = Main
+Label.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Label.Size = UDim2.new(0.998350694, 0, 0.453797489, 0)
+Label.Font = Enum.Font.Arcade
+Label.Text = "Made by iTsSaaty"
+Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+Label.TextScaled = true
+Label.TextSize = 16
+Label.TextStrokeTransparency = 0.000
+Label.TextWrapped = true
 
 re2.Name = "re2"
 re2.Parent = Main
 re2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-re2.Position = UDim2.new(0.0705073774, 0, 0.271171719, 0)
-re2.Size = UDim2.new(0.858350694, 0, 0.453797489, 0)
+re2.Position = UDim2.new(0.0705073774, 0, 0.481171719, 0)
+re2.Size = UDim2.new(0.858350694, 0, 0.473797489, 0)
 re2.Visible = false
 re2.Font = Enum.Font.Arcade
 re2.Text = "Auto Respawn : On"
@@ -35,8 +47,8 @@ re2.TextWrapped = true
 re1.Name = "re1"
 re1.Parent = Main
 re1.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-re1.Position = UDim2.new(0.0705073774, 0, 0.271171719, 0)
-re1.Size = UDim2.new(0.858350694, 0, 0.453797489, 0)
+re1.Position = UDim2.new(0.0705073774, 0, 0.481171719, 0)
+re1.Size = UDim2.new(0.858350694, 0, 0.473797489, 0)
 re1.Font = Enum.Font.Arcade
 re1.Text = "Auto Respawn"
 re1.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -48,6 +60,46 @@ re1.TextWrapped = true
 local Player, plr = game.Players.LocalPlayer, game.Players.LocalPlayer
 local saved = workspace["Criminals Spawn"].SpawnLocation.CFrame
 
+function DragifyGui(Frame,Is)
+	coroutine.wrap(function()
+		local dragToggle = nil
+		local dragSpeed = 5
+		local dragInput = nil
+		local dragStart = nil
+		local dragPos = nil
+		local startPos = nil
+		local function updateInput(input)
+			local Delta = input.Position - dragStart
+			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.30), {Position = Position}):Play()
+		end
+		Frame.InputBegan:Connect(function(input)
+			if not Is then
+				if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and game:GetService("UserInputService"):GetFocusedTextBox() == nil then
+					dragToggle = true
+					dragStart = input.Position
+					startPos = Frame.Position
+					input.Changed:Connect(function()
+						if input.UserInputState == Enum.UserInputState.End then
+							dragToggle = false
+						end
+					end)
+				end
+			end
+		end)
+		Frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if input == dragInput and dragToggle then
+				updateInput(input)
+			end
+		end)
+	end)()
+end
+DragifyGui(Main)
 function GuardsFull(a)
   if a == "b" then
     return #game.Teams.Guards:GetPlayers() == 8 and plr.Team == game.Teams.Guards
@@ -253,3 +305,4 @@ plr.CharacterAdded:Connect(function(NewChar)
         end
     end)
 end)
+Refresh()
