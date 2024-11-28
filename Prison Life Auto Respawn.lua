@@ -15,7 +15,7 @@ Main.Parent = ScreenGui
 Main.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 Main.BorderColor3 = Color3.fromRGB(255, 0, 0)
 Main.BorderSizePixel = 2
-Main.Position = UDim2.new(0.00485906005, 0, 0.609179854, 0)
+Main.Position = UDim2.new(1, 0, 0.609179854, 0)
 Main.Size = UDim2.new(0.17087847, 0, 0.381620556, 0)
 
 Label.Name = "Label"
@@ -306,3 +306,4 @@ plr.CharacterAdded:Connect(function(NewChar)
     end)
 end)
 Refresh()
+Main:TweenPosition(UDim2.new(0.402142167, 0, 0.415692836, 0),"Out","Quart",1)
