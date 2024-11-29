@@ -23,10 +23,10 @@ Label.Parent = Main
 Label.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 Label.Size = UDim2.new(0.998350694, 0, 0.453797489, 0)
 Label.Font = Enum.Font.Arcade
-Label.Text = "Made by iTsSaaty"
+Label.Text = "Auto Respawn GUI"
 Label.TextColor3 = Color3.fromRGB(255, 255, 255)
 Label.TextScaled = true
-Label.TextSize = 16
+Label.TextSize = 14
 Label.TextStrokeTransparency = 0.000
 Label.TextWrapped = true
 
@@ -60,6 +60,7 @@ re1.TextWrapped = true
 local Toggles = {
       AutoRespawn = false
 }
+local library = loadstring(Game:HttpGet('https://raw.githubusercontent.com/NoobHubV1/NoobHubV1/main/Notification%20Lib.lua'))()
 local Player, plr = game.Players.LocalPlayer, game.Players.LocalPlayer
 local saved = workspace["Criminals Spawn"].SpawnLocation.CFrame
 
@@ -301,15 +302,18 @@ plr.CharacterAdded:Connect(function(NewChar)
     repeat swait() until NewChar
     NewChar:WaitForChild('Head')
     NewChar:WaitForChild("HumanoidRootPart")
-    NewChar:WaitForChild("Humanoid").BreakJointsOnDeath = not Toggles.AutoRespawn
     NewChar:WaitForChild("Humanoid").Died:Connect(function()
         if Toggles.AutoRespawn then
           Refresh()
         end
     end)
-    if Toggles.AutoRespawn then
-	NewChar:WaitForChild("ForceField"):Destroy()
-    end
 end)
 Refresh()
 Main:TweenPosition(UDim2.new(0.368556708, 0, 0.11490047, 0),"Out","Quart",1)
+setclipboard("https://www.youtube.com/c/iTsSaalty?sub_confirmation=1")
+library:MakeNotification({
+	Name = 'Loads',
+	Content = 'Loaded Script!',
+	Color = Color3.fromRGB(255, 0, 0),
+	Time = 3
+})
