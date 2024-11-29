@@ -16,7 +16,7 @@ Main.Parent = ScreenGui
 Main.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 Main.BorderColor3 = Color3.fromRGB(255, 0, 0)
 Main.BorderSizePixel = 2
-Main.Position = UDim2.new(2, 0, 0.609179854, 0)
+Main.Position = UDim2.new(2, 0, 0, 0)
 Main.Size = UDim2.new(0.17087847, 0, 0.381620556, 0)
 
 Label.Name = "Label"
@@ -61,7 +61,7 @@ OpenBtn.Visible = false
 Auto.Name = "re2"
 Auto.Parent = Main
 Auto.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Auto.Position = UDim2.new(0.0705073774, 0, 0.481171719, 0)
+Auto.Position = UDim2.new(0.0705073774, 0, 0.491171719, 0)
 Auto.Size = UDim2.new(0.858350694, 0, 0.473797489, 0)
 Auto.Font = Enum.Font.Arcade
 Auto.Text = "Auto Respawn"
@@ -337,9 +337,3 @@ end)
 Refresh()
 Main:TweenPosition(UDim2.new(0.368556708, 0, 0.11490047, 0),"Out","Quart",1)
 setclipboard("https://www.youtube.com/c/iTsSaalty?sub_confirmation=1")
-library:MakeNotification({
-	Name = 'Loads',
-	Content = 'Loaded Script!',
-	Color = Color3.fromRGB(255, 0, 0),
-	Time = 3
-})
