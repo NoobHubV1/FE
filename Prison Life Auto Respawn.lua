@@ -16,7 +16,7 @@ Main.Parent = ScreenGui
 Main.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 Main.BorderColor3 = Color3.fromRGB(255, 0, 0)
 Main.BorderSizePixel = 2
-Main.Position = UDim2.new(2, 0, 0, 0)
+Main.Position = UDim2.new(0.5, 0, -0.2, 0)
 Main.Size = UDim2.new(0.17087847, 0, 0.381620556, 0)
 
 Label.Name = "Label"
@@ -48,7 +48,7 @@ OpenBtn.Name = "Open"
 OpenBtn.Parent = ScreenGui
 OpenBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 OpenBtn.Position = UDim2.new(0, 0, 0.395768493, 0)
-OpenBtn.Size = UDim2.new(0, 90, 0, 45)
+OpenBtn.Size = UDim2.new(0, 100, 0, 15)
 OpenBtn.Font = Enum.Font.Arcade
 OpenBtn.Text = "OPEN"
 OpenBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -183,7 +183,7 @@ function WaitForRespawn(Cframe,NoForce)
 				for i = 1, Amount do
 					UnSit()
 					NewCharacter:WaitForChild("HumanoidRootPart").CFrame = Cframe
-          swait()
+					swait()
 				end
 				if NoForce then
 					NewCharacter:FindFirstChild("ForceField"):Destroy()
@@ -335,5 +335,10 @@ plr.CharacterAdded:Connect(function(NewChar)
     end)
 end)
 Refresh()
-Main:TweenPosition(UDim2.new(0.368556708, 0, 0.11490047, 0),"Out","Quart",1)
+Main:TweenPosition(
+	UDim2.fromScale(0.5, 0.5),
+	Enum.EasingDirection.In,
+	Enum.EasingStyle.Quad,
+	1, true, nil
+)
 setclipboard("https://www.youtube.com/c/iTsSaalty?sub_confirmation=1")
