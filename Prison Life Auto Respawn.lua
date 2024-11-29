@@ -3,8 +3,7 @@ local Main = Instance.new("Frame")
 local Label = Instance.new("TextLabel")
 local CloseBtn = Instance.new("TextButton")
 local OpenBtn = Instance.new('TextButton')
-local re2 = Instance.new("TextButton")
-local re1 = Instance.new("TextButton")
+local Auto = Instance.new("TextButton")
 
 --Properties:
 
@@ -48,8 +47,8 @@ CloseBtn.TextWrapped = true
 OpenBtn.Name = "Open"
 OpenBtn.Parent = ScreenGui
 OpenBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-OpenBtn.Position = UDim2.new(0.00658436213, 0, 0.365768493, 0)
-OpenBtn.Size = UDim2.new(0, 100, 0, 15)
+OpenBtn.Position = UDim2.new(0, 0, 0.395768493, 0)
+OpenBtn.Size = UDim2.new(0, 90, 0, 45)
 OpenBtn.Font = Enum.Font.Arcade
 OpenBtn.Text = "OPEN"
 OpenBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -59,32 +58,18 @@ OpenBtn.TextStrokeTransparency = 0.000
 OpenBtn.TextWrapped = true
 OpenBtn.Visible = false
 
-re2.Name = "re2"
-re2.Parent = Main
-re2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-re2.Position = UDim2.new(0.0705073774, 0, 0.481171719, 0)
-re2.Size = UDim2.new(0.858350694, 0, 0.473797489, 0)
-re2.Visible = false
-re2.Font = Enum.Font.Arcade
-re2.Text = "Auto Respawn : On"
-re2.TextColor3 = Color3.fromRGB(255, 255, 255)
-re2.TextScaled = true
-re2.TextSize = 14.000
-re2.TextStrokeTransparency = 0.000
-re2.TextWrapped = true
-
-re1.Name = "re1"
-re1.Parent = Main
-re1.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-re1.Position = UDim2.new(0.0705073774, 0, 0.481171719, 0)
-re1.Size = UDim2.new(0.858350694, 0, 0.473797489, 0)
-re1.Font = Enum.Font.Arcade
-re1.Text = "Auto Respawn"
-re1.TextColor3 = Color3.fromRGB(255, 255, 255)
-re1.TextScaled = true
-re1.TextSize = 14.000
-re1.TextStrokeTransparency = 0.000
-re1.TextWrapped = true
+Auto.Name = "re2"
+Auto.Parent = Main
+Auto.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Auto.Position = UDim2.new(0.0705073774, 0, 0.481171719, 0)
+Auto.Size = UDim2.new(0.858350694, 0, 0.473797489, 0)
+Auto.Font = Enum.Font.Arcade
+Auto.Text = "Auto Respawn"
+Auto.TextColor3 = Color3.fromRGB(255, 255, 255)
+Auto.TextScaled = true
+Auto.TextSize = 14.000
+Auto.TextStrokeTransparency = 0.000
+Auto.TextWrapped = true
 
 local Toggles = {
       AutoRespawn = false
@@ -314,17 +299,14 @@ function Refresh()
   ChangeTeam(plr.Team)
 end
 
-re2.MouseButton1Click:connect(function()
-    re2.Visible = false
-    re1.Visible = true
-    Toggles.AutoRespawn = false
-end)
-
-re1.MouseButton1Click:connect(function()
-    re2.Visible = true
-    re1.Visible = false
-    re1.Text = "Auto Respawn : Off"
-    Toggles.AutoRespawn = true
+Auto.MouseButton1Click:connect(function()
+    if Toggles.AutoRespawn then
+	Auto.Text = "Auto Respawn : Off"
+	Toggles.AutoRespawn = false
+    elseif Toggles.AutoRespawn == false then
+	Auto.Text = "Auto Respawn : On"
+	Toggles.AutoRespawn = true
+    end
 end)
 
 CloseBtn.MouseButton1Click:Connect(function()
