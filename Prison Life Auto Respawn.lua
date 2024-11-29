@@ -1,6 +1,8 @@
 local ScreenGui = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local Label = Instance.new("TextLabel")
+local CloseBtn = Instance.new("TextButton")
+local OpenBtn = Instance.new('TextButton')
 local re2 = Instance.new("TextButton")
 local re1 = Instance.new("TextButton")
 
@@ -15,7 +17,7 @@ Main.Parent = ScreenGui
 Main.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 Main.BorderColor3 = Color3.fromRGB(255, 0, 0)
 Main.BorderSizePixel = 2
-Main.Position = UDim2.new(1, 0, 0.609179854, 0)
+Main.Position = UDim2.new(2, 0, 0.609179854, 0)
 Main.Size = UDim2.new(0.17087847, 0, 0.381620556, 0)
 
 Label.Name = "Label"
@@ -29,6 +31,33 @@ Label.TextScaled = true
 Label.TextSize = 14
 Label.TextStrokeTransparency = 0.000
 Label.TextWrapped = true
+
+CloseBtn.Name = "Close"
+CloseBtn.Parent = Main
+CloseBtn.BackgroundColor3 = Color3.fromRGB(155, 0, 0)
+CloseBtn.Position = UDim2.new(0.9905073774, 0, 0, 0)
+CloseBtn.Size = UDim2.new(0, 25, 0, 25)
+CloseBtn.Font = Enum.Font.Arcade
+CloseBtn.Text = "X"
+CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseBtn.TextScaled = true
+CloseBtn.TextSize = 14.000
+CloseBtn.TextStrokeTransparency = 0.000
+CloseBtn.TextWrapped = true
+
+OpenBtn.Name = "Open"
+OpenBtn.Parent = ScreenGui
+OpenBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+OpenBtn.Position = UDim2.new(0.00658436213, 0, 0.365768493, 0)
+OpenBtn.Size = UDim2.new(0, 100, 0, 15)
+OpenBtn.Font = Enum.Font.Arcade
+OpenBtn.Text = "OPEN"
+OpenBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+OpenBtn.TextScaled = true
+OpenBtn.TextSize = 14.000
+OpenBtn.TextStrokeTransparency = 0.000
+OpenBtn.TextWrapped = true
+OpenBtn.Visible = false
 
 re2.Name = "re2"
 re2.Parent = Main
@@ -296,6 +325,18 @@ re1.MouseButton1Click:connect(function()
     re1.Visible = false
     re1.Text = "Auto Respawn : Off"
     Toggles.AutoRespawn = true
+end)
+
+CloseBtn.MouseButton1Click:Connect(function()
+    CloseBtn.Visible = false
+    OpenBtn.Visible = true
+    Main.Visible = false
+end)
+
+OpenBtn.MouseButton1Click:Connect(function()
+    CloseBtn.Visible = true
+    OpenBtn.Visible = false
+    Main.Visible = true
 end)
 
 plr.CharacterAdded:Connect(function(NewChar)
