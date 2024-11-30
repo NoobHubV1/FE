@@ -185,9 +185,6 @@ function WaitForRespawn(Cframe,NoForce)
 					NewCharacter:WaitForChild("HumanoidRootPart").CFrame = Cframe
 					swait()
 				end
-				if NoForce then
-					NewCharacter:FindFirstChild("ForceField"):Destroy()
-				end
 			end)
 			a:Disconnect()
 			Cframe = nil
@@ -299,7 +296,7 @@ function ChangeTeam(TeamPath,NoForce,Pos)
 	end
 end
 function Refresh()
-  ChangeTeam(plr.Team,true)
+  ChangeTeam(plr.Team)
 end
 
 Auto.MouseButton1Click:connect(function()
@@ -333,6 +330,9 @@ plr.CharacterAdded:Connect(function(NewChar)
           Refresh()
         end
     end)
+    if Toggles.AutoRespawn then
+	NewChar:WaitForChild("ForceField"):Destroy()
+    end
 end)
 Refresh()
 Main:TweenPosition(
