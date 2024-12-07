@@ -330,9 +330,6 @@ plr.CharacterAdded:Connect(function(NewChar)
           Refresh()
         end
     end)
-    if Toggles.AutoRespawn then
-	NewChar:WaitForChild("ForceField"):Destroy()
-    end
 end)
 Refresh()
 Main:TweenPosition(
